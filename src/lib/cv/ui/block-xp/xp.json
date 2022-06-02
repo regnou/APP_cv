@@ -1,0 +1,50 @@
+[
+	{
+		"color": "#fef3c7",
+		"txt_1": "J.S. Developer<br />[ > 2 ans ] Svelte-kit, Firebase, Tailwind, Vite<br />I have created:<br />- 1x Design systems guideline<br />- 1x UI kits<br />- 1x Starters & templates - 1x Applications & CMS (ecom, blog, scrappers…)<br />",
+		"txt_2": "Axelo / Freelancer",
+		"txt_3": "2020 2022"
+	},
+	{
+		"color": "#99f6e4",
+		"txt_1": "J.S. Developer <br />[ 1 an et 1 mois ] React, Graphql, Redux, MongoDB <br />",
+		"txt_2": "Togezer / Agence Web",
+		"txt_3": "2018 2019"
+	},
+	{
+		"color": "#99f6e4",
+		"txt_1": "Web Technical Leader <br />[ 1 an et 3 mois ] Wordpress, Gestion de projet <br />",
+		"txt_2": "Terra Andina / Agence de Tourisme",
+		"txt_3": "2018 2019"
+	},
+	{
+		"color": "#dbeafe",
+		"txt_1": "Developer Java / T.M.A.  <br/> [ 1 an et 1 mois ] GWT, Talend, PostgreSQL",
+		"txt_2": "Mediavision / Régie publicitaire",
+		"txt_3": "2015 2016"
+	},
+	{
+		"color": "#dbeafe",
+		"txt_1": "Developer Java / T.M.A. <br/>  [ 8 mois ] Spring, J.E.E., Websphere",
+		"txt_2": "Darty / E-commerce",
+		"txt_3": "2014 2015"
+	},
+	{
+		"color": "#dbeafe",
+		"txt_1": "Developer Java / T.M.A. <br/>  [ 4 mois ] Hibernate, J.E.E., Weblogic",
+		"txt_2": "Société Générale / Banque de détail",
+		"txt_3": "2014"
+	},
+	{
+		"color": "#dbeafe",
+		"txt_1": "C.E.O. / Startuper <br/> [ 2 ans ] Java: G.W.T., G.C.P.",
+		"txt_2": "Manana Seguro / Agenda Culturel",
+		"txt_3": "2012 2013"
+	},
+	{
+		"color": "gainsboro",
+		"txt_1": "DIPLÔME D'INGÉNIEUR EN INFORMATIQUE",
+		"txt_2": "E.P.I.T.A.",
+		"txt_3": "2011"
+	}
+]

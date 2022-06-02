@@ -1,0 +1,111 @@
+{
+	"dashboard": {
+		"href": "",
+		"slug": "",
+		"label": "",
+		"submenus": [
+			{
+				"href": "/admin",
+				"slug": "axel",
+				"label": "tableau de bord"
+			}
+		]
+	},
+	"userMenus": {
+		"href": "",
+		"slug": "",
+		"label": "Mon compte",
+		"submenus": [
+			{
+				"href": "/admin/ax/shell-account",
+				"slug": "shell-account",
+				"label": "mon compte"
+			},
+			{
+				"href": "/admin/ax/shell-setting",
+				"slug": "shell-setting",
+				"label": "paramètres"
+			}
+		]
+	},
+	"ecomMenus": {
+		"href": "",
+		"slug": "",
+		"label": "E-commerce",
+		"submenus": [
+			{
+				"href": "/admin/ax/ecom-order",
+				"slug": "ecom-order",
+				"label": "commandes"
+			},
+			{
+				"href": "/admin/ax/ecom-paymentMethod",
+				"slug": "ecom-paymentMethod",
+				"label": "moyens de paiement"
+			},
+			{
+				"href": "/admin/ax/ecom-order",
+				"slug": "ecom-devis",
+				"label": "devis"
+			},
+			{
+				"href": "/admin/ax/ecom-invoice",
+				"slug": "ecom-invoice",
+				"label": "factures"
+			},
+			{
+				"href": "/admin/ax/ecom-subscription",
+				"slug": "ecom-subscription",
+				"label": "abonnements"
+			},
+			{
+				"href": "/admin/ax/ecom-address",
+				"slug": "ecom-address",
+				"label": "addresses"
+			},
+			{
+				"href": "/admin/root-ax/shell-perf",
+				"slug": "perf",
+				"label": "performances"
+			}
+		]
+	},
+
+	"rootMenus": {
+		"href": "",
+		"slug": "",
+		"label": "Administrateur",
+		"submenus": [
+			{
+				"href": "/admin/root-ax/shell-user",
+				"slug": "shell-user",
+				"label": "utilisateurs"
+			},
+			{
+				"href": "/admin/root-ax/ecom-product",
+				"slug": "product",
+				"label": "produits"
+			},
+			{
+				"href": "/admin/root-ax/ecom-order",
+				"slug": "order",
+				"label": "commandes"
+			},
+			{
+				"href": "/admin/root-ax/ecom-order",
+				"slug": "order",
+				"label": "devis"
+			},
+			{
+				"href": "/admin/root-ax/ecom-invoice",
+				"slug": "invoice",
+				"label": "factures"
+			},
+			{
+				"href": "/admin/ax/ecom-subscription",
+				"slug": "ecom-subscription",
+				"label": "abonnements"
+			}
+		]
+	}
+}

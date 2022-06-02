@@ -1,0 +1,1 @@
+import{S as e,i as n,s as a}from"../../chunks/index-81160aa3.js";async function l({params:t,fetch:s,session:r,stuff:o}){return{status:302,redirect:"/admin/axel"}}class c extends e{constructor(s){super();n(this,s,null,null,a,{})}}export{c as default,l as load};
