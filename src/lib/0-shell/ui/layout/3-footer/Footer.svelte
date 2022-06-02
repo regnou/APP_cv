@@ -1,19 +1,17 @@
 <LayoutGrid class="bg-gray-200">
-	<!-- <Cell span={12} class="flex gap-5"> -->
-	<!-- <div class="">Suivez-moi sur:</div> -->
-	<!-- <FacebookSvg /> -->
-	<!-- <LinkedinSvg /> -->
-	<!-- <TwitterSvg /> -->
-	<!-- <YtSvg /> -->
-	<!-- </Cell> -->
-
-	<!-- separator -->
-	<!-- <Cell span={12}>
+	<Cell span={12} class="flex gap-5">
+		<div class="">Suivez-moi sur:</div>
+		<!-- <FacebookSvg /> -->
+		<LinkedinSvg />
+		<!-- <TwitterSvg /> -->
+		<YtSvg />
+	</Cell>
+	<Cell span={12}>
 		<div class="border-b border-gray-500" />
-	</Cell> -->
+	</Cell>
 
 	<!-- !! col 1 -->
-	<!-- <Cell>
+	<Cell>
 		<Group>
 			<Subheader class="font-bold">Site</Subheader>
 			<List class="max-w-xs border-l border-black">
@@ -28,9 +26,9 @@
 				</Item>
 			</List>
 		</Group>
-	</Cell> -->
+	</Cell>
 	<!-- !! col 2 -->
-	<!-- <Cell>
+	<Cell>
 		<Group>
 			<Subheader class="font-bold">Services</Subheader>
 			<List class="max-w-xs border-l border-black">
@@ -45,15 +43,24 @@
 				</Item>
 			</List>
 		</Group>
-	</Cell> -->
+	</Cell>
 	<!-- !! col 3 -->
-	<!-- <Cell>
+	<Cell>
 		<Group>
 			<Subheader class="font-bold">Legal</Subheader>
 			<List class="max-w-xs border-l border-black">
 				<Item on:SMUI:action={() => (clicked = 'To Kill a Mockingbird')}>
 					<Text>Mentions légales</Text>
 				</Item>
+				<!-- <Item on:SMUI:action={() => (clicked = 'The Great Gatsby')}>
+					<Text>C.G.U.</Text>
+				</Item>
+				<Item on:SMUI:action={() => (clicked = '1984')}>
+					<Text>C.G.H.</Text>
+				</Item>
+				<Item on:SMUI:action={() => (clicked = 'Catch-22')}>
+					<Text>C.G.V.</Text>
+				</Item> -->
 				<Item on:SMUI:action={() => (clicked = "Alice's Adventures in Wonderland")}>
 					<Text>Politique de confidentialité</Text>
 				</Item>
@@ -65,7 +72,7 @@
 				</Item>
 			</List>
 		</Group>
-	</Cell> -->
+	</Cell>
 
 	<Cell span={12}>
 		<div class="border-b border-gray-500" />

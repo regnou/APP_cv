@@ -7,12 +7,12 @@
 		<!-- !!!!! SIDE: left -->
 		<Section>
 			<!--  -->
-			<!-- <IconButton
+			<IconButton
 				style="color:var(--wa-color-1)"
 				class="material-icons"
 				on:click={() => (open = !open)}
 				>menu
-			</IconButton> -->
+			</IconButton>
 			<!--  -->
 			<Button on:click={() => console.log('p')} class="overflow-hidden">
 				<Image
@@ -29,10 +29,10 @@
 			<!-- <BtnCart /> -->
 			<!-- <BtnLogin /> -->
 			<!-- !!!! -->
-			<!-- <IconButton
+			<IconButton
 				style="color:var(--wa-color-2)"
 				class="material-icons"
-				aria-label="Bookmark this page">mail</IconButton> -->
+				aria-label="Bookmark this page">mail</IconButton>
 		</Section>
 	</Row>
 </TopAppBar>

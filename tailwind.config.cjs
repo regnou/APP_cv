@@ -14,10 +14,12 @@ module.exports = {
 		// ],
 		fontFamily: {
 			quicksand: ['Quicksand', 'sans-serif'],
+			
 			// inutile ci dessous (voir roboto condensed pour replace economica)
 			economica: ['Economica', 'sans-serif'],
 			inter: ['Inter', 'sans-serif'],
-			lato: ['Lato', 'sans-serif']
+			lato: ['Lato', 'sans-serif'],
+			varela: ['Varela Round', 'sans-serif']
 			// condensed: ['Open+Sans+Condensed', 'sans-serif'],
 			// 'sans': ['Nunito', 'sans-serif'],
 			// 'sans': ['Nunito', 'ui-sans-serif', 'system-ui', '-apple-system', BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'sans-serif', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'],
@@ -28,7 +30,6 @@ module.exports = {
 		extend: {
 			animation: {
 				// cubic-bezier(0, 0, 0.2, 1)
-				'fast-gradient': 'fast-gradient 2s ease infinite',
 				'ax-5': 'ax-5 4s ease-in-out infinite',
 				'ax-4': 'ax-3 6s ease-in-out infinite',
 				'ax-3': 'ax-3 6s linear infinite',
@@ -40,17 +41,6 @@ module.exports = {
 					'rotate-center 0.4s cubic-bezier(0.455, 0.030, 0.515, 0.955)   both'
 			},
 			keyframes: {
-				'fast-gradient': {
-					'0%': {
-						'background-position': '74% 0%'
-					},
-					'50%': {
-						'background-position': '27% 100%'
-					},
-					'100%': {
-						'background-position': '74% 0%'
-					}
-				},
 				'ax-5': {
 					'0%': {
 						// from: {
@@ -209,11 +199,11 @@ module.exports = {
 					}
 				}
 			},
-			// fontFamily: {
-			// 	sans: ['Inter', ...defaultTheme.fontFamily.sans],
-			// 	serif: [...defaultTheme.fontFamily.serif],
-			// 	mono: [...defaultTheme.fontFamily.mono]
-			// },
+			fontFamily: {
+				sans: ['Inter', ...defaultTheme.fontFamily.sans],
+				serif: [...defaultTheme.fontFamily.serif],
+				mono: [...defaultTheme.fontFamily.mono]
+			},
 			width: {
 				350: '350px',
 				300: '300px'
