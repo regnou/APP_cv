@@ -14,7 +14,7 @@
 		<Subtitle>version 0.1.0</Subtitle>
 	</Header>
 	<!-- !! drawer--content (les mens du drawer) -->
-	<Content>
+	<!-- <Content>
 		<Separator />
 		<Group>
 			<Subheader>Page</Subheader>
@@ -78,7 +78,7 @@
 			</List>
 		</Group>
 		<Separator />
-	</Content>
+	</Content> -->
 </Drawer>
 
 <!-- !! scrim -->

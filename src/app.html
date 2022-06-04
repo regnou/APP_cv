@@ -10,22 +10,9 @@
 		<!-- !!!! HTML5 boilerplate -->
 		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
 		<!-- !!!! APP_ICON -->
-		<!-- TODO !!! change it -->
-		<!-- <link rel="icon" href="%svelte.assets%/favicon-16.png" /> -->
 		<link rel="shortcut icon" type="image/png" href="%svelte.assets%/favicon-16.png" />
 		<link rel="shortcut icon" sizes="192x192" href="%svelte.assets%/favicon-16.png" />
 		<link rel="apple-touch-icon" href="%svelte.assets%/favicon-16.png" />
-		<!-- ci dessous mat design -->
-		<!-- <link
-			rel="icon"
-			sizes="192x192"
-			href="https://material.io/static/images/simple-lp/favicons/components-192x192.png"
-		/>
-		<link
-			rel="shortcut icon"
-			href="https://material.io/static/images/simple-lp/favicons/components-72x72.png"
-		/> -->
-
 		<!-- !!!! FONT -->
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -33,41 +20,26 @@
 			rel="stylesheet"
 			href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&family=Quicksand:wght@300;400;500;600;700&family=Economica&display=swap"
 		/>
-		<!-- <link
-			href="https://fonts.googleapis.com/css2?family=Economica&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Varela+Round&display=swap"
-			rel="stylesheet"
-		/> -->
-		<!-- Ci-dessous : test google font effect
-		<link
-			href="https://fonts.googleapis.com/css2?family=Economica&family=Varela+Round&family=Lato:wght@100;300;400;700;900&family=Inter:wght@900&effect=shadow-multiple|emboss|fire|3d&display=swap"
-			rel="stylesheet"
-		/> -->
-		<!-- family=Open+Sans+Condensed:ital,wght@0,300;0,700;1,300 -->
-		<!-- family=Nunito:wght@200;300;400;600;700;800;900 -->
 		<!-- !!!! ICON-google -->
 		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-
 		<!-- !!!! SMUI Styles -->
+		<!-- %svelte.assets% -->
+		<link rel="stylesheet" href="/smui.css" media="(prefers-color-scheme: light)" />
 		<link
 			rel="stylesheet"
-			href="%svelte.assets%/smui.css"
-			media="(prefers-color-scheme: light)"
-		/>
-		<!-- <link
-			rel="stylesheet"
-			href="%svelte.assets%/smui-dark.css"
+			href="/smui-dark.css"
 			media="screen and (prefers-color-scheme: dark)"
-		/> -->
-
+		/>
+		<!-- !!  -->
 		<!-- !! SVELTE--head -->
+		<!-- !!  -->
 		%svelte.head%
 		<style></style>
 	</head>
-
 	<!-- !!!!!!!! -->
 	<!-- !!!!!!!! BODY -->
 	<!-- !!!!!!!! -->
-	<body>
+	<body class="">
 		<div class="__ROOT_DIV__">%svelte.body%</div>
 	</body>
 	<!-- <body class="overflow-y-scroll">

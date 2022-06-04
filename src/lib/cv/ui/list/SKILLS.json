@@ -1,0 +1,127 @@
+{
+	"CMS": {
+		"bg": "background-image: linear-gradient(45deg,hsl(240deg 100% 20%) 0%,hsl(289deg 100% 21%) 11%,hsl(315deg 100% 27%) 22%,hsl(329deg 100% 36%) 33%,hsl(337deg 100% 43%) 44%,hsl(357deg 91% 59%) 56%,hsl(17deg 100% 59%) 67%,hsl(34deg 100% 53%) 78%,hsl(45deg 100% 50%) 89%,hsl(55deg 100% 50%) 100%);",
+		"list": [
+			{
+				"type": "wordpress",
+				"txt_1": "Wordpress",
+				"txt_2": "CMS pour blogs"
+			},
+			{
+				"type": "woocommerce",
+				"txt_1": "Woo-commerce",
+				"txt_2": "CMS pour e-commerce"
+			}
+		]
+	},
+	"SEO": {
+		"bg": "background: linear-gradient(270deg, #ff5700, #ffd300); background-size: 400% 400%;",
+		"list": [
+			{
+				"type": "ganalytics",
+				"txt_1": "Google Analytics",
+				"txt_2": "SEO metrics"
+			},
+			{
+				"type": "glocals",
+				"txt_1": "Google locals",
+				"txt_2": "Géo référencement"
+			}
+		]
+	},
+	"Design UI & UX": {
+		"bg": "background: #ED213A;  /* fallback for old browsers */ background: -webkit-linear-gradient(to right, #93291E, #ED213A);  /* Chrome 10-25, Safari 5.1-6 */ background: linear-gradient(to right, #93291E, #ED213A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */",
+		"list": [
+			{
+				"type": "svelte",
+				"txt_1": "Svelte (kit)",
+				"txt_2": "Framework Web"
+			},
+			{
+				"type": "js",
+				"txt_1": "JS",
+				"txt_2": "Web tecnology"
+			},
+			{
+				"type": "html",
+				"txt_1": "HTML",
+				"txt_2": "Web tecnology"
+			},
+			{
+				"type": "css",
+				"txt_1": "CSS",
+				"txt_2": "Web tecnology"
+			},
+			{
+				"type": "tailwind",
+				"txt_1": "Tailwind",
+				"txt_2": "CSS pre-processor"
+			}
+		]
+	},
+	"Hosting & Server": {
+		"bg": "background-image: linear-gradient(270deg, #7f7fd5, #86a8e7, #91eae4); background-size: 400% 400%;}",
+		"list": [
+			{
+				"type": "node",
+				"txt_1": "Node",
+				"txt_2": "Server"
+			},
+			{
+				"type": "gcloud",
+				"txt_1": "Google cloud",
+				"txt_2": "Infrastructure As A Service"
+			},
+			{
+				"type": "gcp",
+				"txt_1": "Google Cloud Platform",
+				"txt_2": "Platform As A Service"
+			},
+			{
+				"type": "firebase",
+				"txt_1": "firebase",
+				"txt_2": "Platform As A Service"
+			},
+			{
+				"type": "firestore",
+				"txt_1": "Firestore",
+				"txt_2": "Database NoSQL, temps réel"
+			}
+		]
+	},
+	"Tests, Automations & Scrapping": {
+		"bg": "    background: linear-gradient(270deg, #246655, #63e03a); background-size: 400% 400%;",
+		"list": [
+			{
+				"type": "jest",
+				"txt_1": "Jest",
+				"txt_2": "Test lib (Facebook)"
+			},
+			{
+				"type": "playwright",
+				"txt_1": "Playwright",
+				"txt_2": "Automation lib (Microsoft)"
+			}
+		]
+	},
+	"Others": {
+		"bg": "    background: #f953c6;  /* fallback for old browsers */ background: -webkit-linear-gradient(to right, #b91d73, #f953c6);  /* Chrome 10-25, Safari 5.1-6 */ background: linear-gradient(to right, #b91d73, #f953c6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ ",
+		"list": [
+			{
+				"type": "gmap",
+				"txt_1": "Google Map",
+				"txt_2": "Géo localisation"
+			},
+			{
+				"type": "stripe",
+				"txt_1": "Stripe",
+				"txt_2": "Payment procesor"
+			},
+			{
+				"type": "vite",
+				"txt_1": "Vite",
+				"txt_2": "Builder"
+			}
+		]
+	}
+}
