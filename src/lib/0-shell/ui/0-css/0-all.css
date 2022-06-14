@@ -1,4 +1,0 @@
-@import 'tailwindcss/base'; /* !! Preflight will be injected here */
-@import './1-base.css';
-@import 'tailwindcss/components'; /* !!!! */
-@import 'tailwindcss/utilities'; /* !!!!!!!! */
