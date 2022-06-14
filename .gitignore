@@ -1,0 +1,70 @@
+# !!!!I backed the SSG site
+# build
+# !!!!! env
+.env
+.env.*
+.env.local
+.env.*.local
+!.env.example
+# !!!!! static
+static/data
+# Ignore the build css
+static/*.css
+# Ignore the xml
+static/sitemap.xml
+static/feed.xml
+static/rss.xml
+# !!!!!! Firebase cache
+.firebase/
+# !!!!!! Firebase config
+# Uncomment this if you'd like others to create their own Firebase project.
+# For a team working on the same Firebase project(s), it is rstoremended to leave
+# it commented so all members can deploy to the same project(s) in .firebaserc.
+# .firebaserc
+# !! OS generated files #
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+# !! Logs
+logs
+*.log
+# !!!!!!!! sveltekit
+/.svelte
+/.svelte-kit
+/package
+# !!!!!!!! Dependency directories
+node_modules
+# !!!!! log (debug)
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+# !!!!!!!!! TEST
+# -- cypress
+cypress/videos
+cypress/screenshots
+# -- jest
+coverage
+coverage/*
+# -- playwright
+/test-results/
+/playwright-report/
+/playwright/.cache/
+# !!!!!!! Z
+# -- Storybook
+storybook-static
+storybook-static/*
+# -- vercel
+.vercel_build_output
+.vercel
+# -- KDE/Linux generated files #
+.directory
+# -- Runtime data #
+pids
+*.pid
+*.seed
+*.pid.lock
+*.eslintcache

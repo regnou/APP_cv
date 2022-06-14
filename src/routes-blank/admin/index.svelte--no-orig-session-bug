@@ -1,0 +1,27 @@
+<script context="module">
+	/** @type {import('./[slug]').Load} */
+	export async function load({params, fetch, session, stuff}) {
+		// const url = `https://cms.example.com/article/${params.slug}.json`;
+		// const response = await fetch(url);
+
+		// TODO
+		// const { user } = session;
+		const user = 'axel' // !!
+
+		if (!user) {
+			return {
+				// status: response.status,
+				status: 302,
+				redirect: '/signin'
+				// props: {
+				// article: response.ok && (await response.json())
+				// }
+			}
+		} else {
+			return {
+				status: 302,
+				redirect: `/admin/${user}`
+			}
+		}
+	}
+</script>

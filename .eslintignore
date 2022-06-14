@@ -1,0 +1,48 @@
+/functions
+
+# !!!!I backed the SSG site
+/build
+build
+# !! OS generated files #
+.DS_Store
+# !!!!!!!! sveltekit
+/.svelte
+/.svelte-kit
+.svelte-kit
+/package
+# svelte.config.js
+# !!!!! env
+.env
+.env.*
+!.env.example
+# !!!!!!!! Dependency directories
+node_modules
+/node_modules
+/.yarn
+.yarn
+# !!!!! static
+static/global.css
+static/*.js
+# !!!!!!!!! TEST
+# -- Storybook files #
+storybook-static
+storybook-static/*
+# -- Jest files #
+coverage
+coverage/*
+# !!!!!!! Z
+# -- vercel
+/.vercel_build_output
+.vercel_build_output
+
+# -- Ignore files for PNPM, NPM and YARN
+pnpm-lock.yaml
+package-lock.json
+yarn.lock
+
+# -- z
+/dist
+dist
+
+/examples
+/workers-site

@@ -1,0 +1,15 @@
+//    function getCase(caseId) {
+//      return get(/databases/$(database)/documents/supportCases/$(caseId)).data;
+//    }
+//
+//    function getUser(uid) {
+//      return get(/databases/$(database)/documents/users/$(uid)).data;
+//    }
+//
+//    function isAgent(request) {
+//      return getUser(request.auth.uid).role in ['agent'];
+//    }
+//
+//    match /supportCases/{caseId}/messages/{messageId} {
+//      allow read, write: if getCase(caseId).uid == request.auth.uid || isAgent(request);
+//    }

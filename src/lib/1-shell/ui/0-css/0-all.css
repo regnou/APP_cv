@@ -1,0 +1,14 @@
+/* !!!!!!!! */
+/* !!!! */
+
+/* !! Preflight will be injected here */
+@import 'tailwindcss/base';
+@import './1-base.css';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* tailwind setup */
+/* @tailwind base; */
+/* @import './1-base.css'; */
+/* @tailwind components; */
+/* @tailwind utilities; */

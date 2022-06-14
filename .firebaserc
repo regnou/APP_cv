@@ -1,0 +1,6 @@
+{
+	"projects": {
+		"default": "cv-regnoult-axel",
+		"default-test": "firestore-ax-test"
+	}
+}
