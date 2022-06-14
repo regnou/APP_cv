@@ -9,15 +9,15 @@
 > http://www.web-agency.app
 
 ---
-Starter-stack =  material design + tailwind + sveltkit + TS + vitests
----
+
+## Starter-stack = material design + tailwind + sveltkit + TS + vitests
 
 # cv
 
-
 # hosting
+
 "cleanUrls": true
-		"ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
+"ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
 
 apiKey: "AIzaSyCT5pFPGK55cpGiOX0vFjfc5CEc2uKbgM0",
 authDomain: "cv-regnoult-axel.firebaseapp.com",
@@ -36,15 +36,15 @@ measurementId: "G-926RNEQRGF"
     	<!-- family=Nunito:wght@200;300;400;600;700;800;900 -->
 
 
-		<!-- TODO !!! change it -->
-		<!-- <link rel="icon" href="%svelte.assets%/favicon-16.png" /> -->
-				<!-- ci dessous mat design -->
-		<!-- <link
-			rel="icon"
-			sizes="192x192"
-			href="https://material.io/static/images/simple-lp/favicons/components-192x192.png"
-		/>
-		<link
-			rel="shortcut icon"
-			href="https://material.io/static/images/simple-lp/favicons/components-72x72.png"
-		/> -->
+    	<!-- TODO !!! change it -->
+    	<!-- <link rel="icon" href="%svelte.assets%/favicon-16.png" /> -->
+    			<!-- ci dessous mat design -->
+    	<!-- <link
+    		rel="icon"
+    		sizes="192x192"
+    		href="https://material.io/static/images/simple-lp/favicons/components-192x192.png"
+    	/>
+    	<link
+    		rel="shortcut icon"
+    		href="https://material.io/static/images/simple-lp/favicons/components-72x72.png"
+    	/> -->
