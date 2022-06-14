@@ -9,7 +9,8 @@
 > http://www.web-agency.app
 
 ---
-
+Starter-stack =  material design + tailwind + sveltkit + TS + vitests
+---
 
 # cv
 
