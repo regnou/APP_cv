@@ -22,11 +22,11 @@ https://sveltematerialui.com/THEMING.md
 -   If you install a new SMUI package, you should run npm run prepare to rebuild the CSS.
 
 -- todo each time :
-npm run prepare
+`npm run prepare`
 
 -- todo one time :
 You can use it to create your theme directory from a template:
-npx smui-theme template src/theme
+`npx smui-theme template src/theme`
 
 ---
 
