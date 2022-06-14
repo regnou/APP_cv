@@ -7,12 +7,10 @@
 `COMPANY`
 
 > http://www.web-agency.app
-
 ---
-
 #### CV-starter = material design + tailwind + sveltkit + TS + jest
-
 ---
+# INSTALL
 0. Configure SASS
 `npx smui-theme template src/theme`
 `npm run prepare`
@@ -22,6 +20,8 @@
 `npm run build`
 `npm run deploy`
 
+---
+# DOC
 ---
 
 # SMUI - relancer cette cmd apres ajout element
