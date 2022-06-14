@@ -13,6 +13,16 @@
 ## Starter-stack = material design + tailwind + sveltkit + TS + jest
 
 ---
+0. Configure SASS
+`npx smui-theme template src/theme`
+`npm run prepare`
+2. To launch the project in dev mode
+`npm run dev`
+2. To deploy on Firebase Hosting
+`npm run build`
+`npm run deploy`
+
+---
 
 # SMUI - relancer cette cmd apres ajout element
 
