@@ -21,12 +21,12 @@ https://sveltematerialui.com/THEMING.md
 -   npm run prepare to build the CSS file(s)
 -   If you install a new SMUI package, you should run npm run prepare to rebuild the CSS.
 
--- todo each time :
-`npm run prepare`
+1. -- todo each time :
+   `npm run prepare`
 
--- todo one time :
-You can use it to create your theme directory from a template:
-`npx smui-theme template src/theme`
+2. -- todo one time :
+   You can use it to create your theme directory from a template:
+   `npx smui-theme template src/theme`
 
 ---
 
