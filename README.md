@@ -10,7 +10,7 @@
 
 ---
 
-## Starter-stack = material design + tailwind + sveltkit + TS + jest
+#### CV-starter = material design + tailwind + sveltkit + TS + jest
 
 ---
 0. Configure SASS
