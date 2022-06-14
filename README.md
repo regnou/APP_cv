@@ -8,9 +8,10 @@
 
 > http://www.web-agency.app
 ---
+
 # README
 #### CV-starter = material design + tailwind + sveltkit + TS + jest
----
+
 # INSTALL
 0. Configure SASS
 `npx smui-theme template src/theme`
@@ -21,11 +22,10 @@
 `npm run build`
 `npm run deploy`
 
----
-# DOC
----
 
-# SMUI - relancer cette cmd apres ajout element
+# DOC
+
+## SMUI - relancer cette cmd apres ajout element
 
 https://sveltematerialui.com/THEMING.md
 
@@ -41,7 +41,7 @@ https://sveltematerialui.com/THEMING.md
 
 ---
 
-# firebase -- kill
+## firebase -- kill
 
 kill-port --port 8000,9099,5001,8080,5033,9000,5000,8085,9199,4000,4400,4500 && firebase emulators:start --project
 kill-port --port 9099,8080
@@ -50,11 +50,13 @@ kill-port --port 9099,8080
 
 ---
 
-# FIREBASE CONSOLE
+## FIREBASE CONSOLE
 
 Dans l'onglet Méthode de connexion, activez le fournisseur d' adresse e-mail/mot de passe. Notez que la connexion par e-mail/mot de passe doit être activée pour utiliser la connexion par lien e-mail.
 
-# With Svelte
+---
+
+## With Svelte
 
 ![CI](https://github.com/jmagrippis/with-svelte/actions/workflows/main.yaml/badge.svg)
 
@@ -66,7 +68,9 @@ Wonder no more: This is the resource to show you, how you'd do X with Svelte!
 
 <!-- https://fonts.google.com/icons !! -->
 
-# App.svelte => ce qui n a pas marche sur les fonts
+---
+
+## App.svelte => ce qui n a pas marche sur les fonts
 
     	<!-- Ci-dessous : test google font effect
     	<link
@@ -106,9 +110,13 @@ Wonder no more: This is the resource to show you, how you'd do X with Svelte!
     	}
     ],
 
+---
+
 # ROBOT.txt
 
 User-Agent: GooglebotAllow: .jsAllow: .css
+
+---
 
 # elmt visible in viewport
 
@@ -121,6 +129,8 @@ rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
 rect.right <= (window.innerWidth || document.documentElement.clientWidth)
 );
 }
+
+---
 
 # CSS ANIM
 
@@ -211,15 +221,21 @@ lib :
 SVG gallery:
 https://www.svgrepo.com/vectors/woocommerce/
 
+---
+
 # PB DE CENTRAGE
 
 vertical-align:middle (a mettre sur l elmt inline ou inline-block)
 line-height:100% (a mettre sur le parent)
 OU (plus lourd: display:flex; flex-direction: column;)
 
+---
+
 # PRETTIER (format all files)
 
 npx prettier --write src
+
+---
 
 # RESOLUTION
 
@@ -229,6 +245,8 @@ md 768px @media (min-width: 768px) { ... }
 lg 1024px @media (min-width: 1024px) { ... }
 xl 1280px @media (min-width: 1280px) { ... }
 2xl 1536px
+
+---
 
 # UPDATES
 
@@ -242,10 +260,14 @@ npm outdated
 //force latest
 npm install xxx@latest
 
+---
+
 # DIFFICULTIES (firebase)
 
 -   desactivate airPlay receiver on MAC if you cannot launch firebase emulator (because port 5000 is busy)
     https://i.stack.imgur.com/jlt4g.png
+
+---
 
 # LIB
 
@@ -256,11 +278,15 @@ github axel token = 253ac2d17c2534611bb25abfd4e54435ec8ff6c1
 
 npm login --registry=https://npm.pkg.github.com --scope=@regnou
 
+---
+
 # pre-rendering
 
 <!-- <script context="module">
 	export const prerender = true;
 </script> -->
+
+---
 
 # NOTE
 
@@ -282,6 +308,8 @@ npm login --registry=https://npm.pkg.github.com --scope=@regnou
 "ts-jest": "^26.5.4",
 "typescript": "^4.2.3",
 }
+
+---
 
 # SMUI
 
@@ -323,4 +351,7 @@ npm i -D @smui/tooltip
 npm i -D @smui/top-app-bar
 npm i -D @smui/touch-target
 
-  <!-- !!!! -->
+---
+--- END README
+---
+
