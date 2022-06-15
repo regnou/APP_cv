@@ -23,7 +23,7 @@ https://cv-regnoult-axel.web.app
 # 1) README
 
 ```
-RESUME
+> RESUME
 This is my resume, I am an engineer in Computer Science.
 -- Axel REGNOULT
 
