@@ -1,4 +1,4 @@
-# CONTACT - Axel REGNOULT
+### CONTACT - Axel REGNOULT
 
 `RESUME`
 
