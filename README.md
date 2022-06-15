@@ -10,7 +10,7 @@
 
 ---
 
-# README
+# 1) README
 
 ```
 RESUME
@@ -29,7 +29,7 @@ STACK
 
 ---
 
-# INSTALL
+# 2) INSTALL
 
 ## SETUP (mandatory)
 
@@ -60,7 +60,7 @@ STACK
 
 ---
 
-# DOC
+# 3) DOC
 
 ## SMUI - relancer cette cmd apres ajout element
 
