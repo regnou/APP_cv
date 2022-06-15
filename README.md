@@ -1,4 +1,4 @@
-# Axel REGNOULT
+# CONTACT - Axel REGNOULT
 
 `RESUME`
 
@@ -9,6 +9,8 @@
 > http://www.web-agency.app
 
 ---
+
+# README
 
 ```
 RESUME
@@ -22,6 +24,16 @@ This is my resume, I am an engineer in Computer Science.
 3. Firebase Firestore
 4. Jest / Vitest / Playwright
 5. Material Design (SASS) / Tailwind
+
+---
+
+---
+
+---
+
+---
+
+---
 
 # INSTALL
 
