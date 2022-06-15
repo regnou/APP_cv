@@ -1,5 +1,5 @@
 # !!!!I backed the SSG site
-# build
+build
 # !!!!! env
 .env
 .env.*
