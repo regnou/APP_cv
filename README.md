@@ -14,14 +14,17 @@
 
 ```
 RESUME
-This is my resume, I am an engineer in Computer Science. This is the starter's stack:
+This is my resume, I am an engineer in Computer Science.
+-- Axel REGNOULT
+
+STACK
 0. Typescript
 1. Sveltekit
 2. Firebase Hosting
 3. Firebase Firestore
 4. Jest / Vitest / Playwright
 5. Material Design (SASS) / Tailwind
--- Axel REGNOULT
+
 ```
 
 ---
