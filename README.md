@@ -29,10 +29,6 @@ STACK
 
 ---
 
----
-
----
-
 # INSTALL
 
 ## SETUP (mandatory)
