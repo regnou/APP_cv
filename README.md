@@ -1,8 +1,8 @@
 # Axel REGNOULT
 
-`CV`
+`RESUME`
 
-> https://www.cv-regnoult-axel.web.app
+> https://cv-regnoult-axel.web.app
 
 `COMPANY`
 
