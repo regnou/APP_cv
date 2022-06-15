@@ -10,15 +10,22 @@
 
 ---
 
+---
+
+---
+
+# 0) ONLINE DEMO
+
+https://cv-regnoult-axel.web.app
+
+---
+
 # 1) README
 
 ```
 RESUME
 This is my resume, I am an engineer in Computer Science.
 -- Axel REGNOULT
-
-ONLINE DEMO
-https://cv-regnoult-axel.web.app
 
 STACK
 0. Typescript
