@@ -33,10 +33,6 @@ STACK
 
 ---
 
----
-
----
-
 # INSTALL
 
 ## SETUP (mandatory)
@@ -61,6 +57,12 @@ STACK
 
 4. (optional) Deploy on Firebase Hosting  
    `npm run deploy`
+
+---
+
+---
+
+---
 
 # DOC
 
