@@ -7,21 +7,23 @@
 `COMPANY`
 
 > http://www.web-agency.app
+
 ---
 
 # README
+
 #### CV-starter = material design + tailwind + sveltkit + TS + jest
 
 # INSTALL
-0. Configure SASS
-`npx smui-theme template src/theme`
-`npm run prepare`
-2. To launch the project in dev mode
-`npm run dev`
-2. To deploy on Firebase Hosting
-`npm run build`
-`npm run deploy`
 
+0. Configure SASS  
+   `npx smui-theme template src/theme`  
+   `npm run prepare`
+1. To launch the project in dev mode  
+   `npm run dev`
+2. To deploy on Firebase Hosting  
+   `npm run build`  
+   `npm run deploy`
 
 # DOC
 
@@ -32,16 +34,17 @@ https://sveltematerialui.com/THEMING.md
 -   npm run prepare to build the CSS file(s)
 -   If you install a new SMUI package, you should run npm run prepare to rebuild the CSS.
 
-1. -- todo each time :
+1. -- todo each time :  
    `npm run prepare`
 
-2. -- todo one time :
-   You can use it to create your theme directory from a template:
-   `npx smui-theme template src/theme`
+2. -- todo one time :  
+   You can use it to create your theme directory from a template:  
+   `npx smui-theme`  
+   `template src/theme`
 
 ---
 
-## firebase -- kill
+## FIREBASE - KILL
 
 kill-port --port 8000,9099,5001,8080,5033,9000,5000,8085,9199,4000,4400,4500 && firebase emulators:start --project
 kill-port --port 9099,8080
@@ -352,6 +355,5 @@ npm i -D @smui/top-app-bar
 npm i -D @smui/touch-target
 
 ---
---- END README
----
 
+## --- END README
