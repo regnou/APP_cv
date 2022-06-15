@@ -16,15 +16,27 @@
 
 # INSTALL
 
-0. (mandatory) Prepare your project: Configure SASS  
+## SETUP (mandatory)
+
+0. (mandatory) Install the dependencies  
+   `npm run install`
+
+1. (mandatory) Prepare your project: Configure SASS  
    `npx smui-theme template src/theme`  
    `npm run prepare`
+
+## CHOOSE AN OPTION
 
 1. Launch the project in dev mode  
    `npm run dev`
 2. Get the build 🌓  
    `npm run build`
-3. (optional) Deploy on Firebase Hosting  
+3. Launch the tests
+   `npm run test`
+
+## DEPLOY
+
+4. (optional) Deploy on Firebase Hosting  
    `npm run deploy`
 
 # DOC
