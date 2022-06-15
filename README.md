@@ -2,7 +2,7 @@
 
 `RESUME`
 
-> https://gppcv-regnoult-axel.web.app
+> https://cv-regnoult-axel.web.app
 
 `COMPANY`
 
@@ -16,6 +16,9 @@
 RESUME
 This is my resume, I am an engineer in Computer Science.
 -- Axel REGNOULT
+
+ONLINE DEMO
+https://cv-regnoult-axel.web.app
 
 STACK
 0. Typescript
