@@ -31,7 +31,7 @@
    `npm run dev`
 2. Get the build 🌓  
    `npm run build`
-3. Launch the tests
+3. Launch the tests  
    `npm run test`
 
 ## DEPLOY
