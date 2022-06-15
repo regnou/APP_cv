@@ -2,7 +2,7 @@
 
 `RESUME`
 
-> https://cv-regnoult-axel.web.app
+> https://gppcv-regnoult-axel.web.app
 
 `COMPANY`
 
@@ -10,9 +10,18 @@
 
 ---
 
-# README
+```
+RESUME
+This is my resume, I am an engineer in Computer Science.
+-- Axel REGNOULT
+```
 
-#### CV-starter = material design + tailwind + sveltkit + TS + jest
+0. Typescript
+1. Sveltekit
+2. Firebase Hosting
+3. Firebase Firestore
+4. Jest / Vitest / Playwright
+5. Material Design (SASS) / Tailwind
 
 # INSTALL
 
