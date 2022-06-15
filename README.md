@@ -16,13 +16,15 @@
 
 # INSTALL
 
-0. Configure SASS  
+0. (mandatory) Prepare your project: Configure SASS  
    `npx smui-theme template src/theme`  
    `npm run prepare`
-1. To launch the project in dev mode  
+
+1. Launch the project in dev mode  
    `npm run dev`
-2. To deploy on Firebase Hosting  
-   `npm run build`  
+2. Get the build 🌓  
+   `npm run build`
+3. (optional) Deploy on Firebase Hosting  
    `npm run deploy`
 
 # DOC
@@ -39,8 +41,7 @@ https://sveltematerialui.com/THEMING.md
 
 2. -- todo one time :  
    You can use it to create your theme directory from a template:  
-   `npx smui-theme`  
-   `template src/theme`
+   `npx smui-theme template src/theme`
 
 ---
 
