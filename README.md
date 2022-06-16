@@ -44,10 +44,11 @@ STACK
 ## SETUP (mandatory)
 
 0. (mandatory) Install the dependencies  
-   `npm run install`
+   `npm install`
 
 1. (mandatory) Prepare your project: Configure SASS  
-   `npx smui-theme template src/theme`  
+   `npx smui-theme template src/theme`
+   `cp dev.env.dist .env`
    `npm run prepare`
 
 ## CHOOSE AN OPTION
@@ -63,6 +64,14 @@ STACK
 
 4. (optional) Deploy on Firebase Hosting  
    `npm run deploy`
+
+5. (optional) Deploy on Wa-config by Monwoo
+   `# Use filezila and send the local follder '' to the remote wa-config plugin folder : 'head/<head-name>' via ftp`
+
+## DEV
+
+Push need test launch. You can quickly bypass using :
+`git push --no-verify`
 
 ---
 
