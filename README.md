@@ -50,31 +50,39 @@ STACK
    `npx smui-theme template src/theme`  
    `npm run prepare`
 
-2. (mandatory) configure Firebase
+2. (mandatory) Configure Firebase
 
--   rename file: .env.example into .env
--   get firebase SDK-client config:
-    https://console.firebase.google.com/u/0/project/cv-regnoult-axel/settings/general/web:YjllNWY4YzEtNzhjNi00YWVmLTlkNGUtOTgyNDNlNDRjM2U3
-    VITE_FIREBASE_API_KEY=xxx
-    VITE_FIREBASE_AUTH_DOMAIN=xxx
-    VITE_FIREBASE_PROJECT_ID=xxx
--   get firebase SDK-admin config (get your Private API Key in SERVICE-ACCOUNTS tab):
-    https://console.firebase.google.com/u/0/project/cv-regnoult-axel/settings/serviceaccounts/adminsdk
-    FIREBASE_ADMIN_CLIENT_EMAIL=xxx
-    FIREBASE_ADMIN_PRIVATE_KEY=xxx
+2.1 ) Rename file: .env.example into .env
+
+2.2 ) Get firebase SDK-client config:  
+ https://console.firebase.google.com/u/0/project/cv-regnoult-axel/settings/general/web:YjllNWY4YzEtNzhjNi00YWVmLTlkNGUtOTgyNDNlNDRjM2U3
+
+```
+VITE_FIREBASE_API_KEY=xxx
+VITE_FIREBASE_AUTH_DOMAIN=xxx
+VITE_FIREBASE_PROJECT_ID=xxx
+```
+
+2.3 ) Get firebase SDK-admin config (get your Private API Key in SERVICE-ACCOUNTS tab):
+https://console.firebase.google.com/u/0/project/cv-regnoult-axel/settings/serviceaccounts/adminsdk
+
+```
+FIREBASE_ADMIN_CLIENT_EMAIL=xxx
+FIREBASE_ADMIN_PRIVATE_KEY=xxx
+```
 
 ## CHOOSE AN OPTION
 
-1. Launch the project in dev mode  
+1. Launch the project in dev mode
    `npm run dev`
-2. Get the build 🌓  
+2. Get the build 🌓
    `npm run build`
-3. Launch the tests  
+3. Launch the tests
    `npm run test`
 
 ## DEPLOY
 
-4. (optional) Deploy on Firebase Hosting  
+4. (optional) Deploy on Firebase Hosting
    `npm run deploy`
 
 ---
@@ -92,11 +100,11 @@ https://sveltematerialui.com/THEMING.md
 -   npm run prepare to build the CSS file(s)
 -   If you install a new SMUI package, you should run npm run prepare to rebuild the CSS.
 
-1. -- todo each time :  
+1. -- todo each time :
    `npm run prepare`
 
-2. -- todo one time :  
-   You can use it to create your theme directory from a template:  
+2. -- todo one time :
+   You can use it to create your theme directory from a template:
    `npx smui-theme template src/theme`
 
 ---
@@ -414,3 +422,7 @@ npm i -D @smui/touch-target
 ---
 
 ## --- END README
+
+```
+
+```
