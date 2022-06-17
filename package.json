@@ -9,7 +9,7 @@
 	"version": "0.2.0",
 	"type": "module",
 	"engines": {
-		"node": "16.x"
+		"node": "18.x"
 	},
 	"volta": {
 		"node": "16.15.0"

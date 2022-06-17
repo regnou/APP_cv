@@ -44,7 +44,7 @@ STACK
 ## SETUP (mandatory)
 
 0. (mandatory) Install the dependencies  
-   `npm run install`
+   `npm install`
 
 1. (mandatory) Prepare your project: Configure SASS  
    `npx smui-theme template src/theme`  
