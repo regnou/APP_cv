@@ -50,6 +50,19 @@ STACK
    `npx smui-theme template src/theme`  
    `npm run prepare`
 
+2. (mandatory) configure Firebase
+
+-   rename file: .env.example into .env
+-   get firebase SDK-client config:
+    https://console.firebase.google.com/u/0/project/cv-regnoult-axel/settings/general/web:YjllNWY4YzEtNzhjNi00YWVmLTlkNGUtOTgyNDNlNDRjM2U3
+    VITE_FIREBASE_API_KEY=xxx
+    VITE_FIREBASE_AUTH_DOMAIN=xxx
+    VITE_FIREBASE_PROJECT_ID=xxx
+-   get firebase SDK-admin config (get your Private API Key):
+    https://console.firebase.google.com/u/0/project/cv-regnoult-axel/settings/serviceaccounts/adminsdk
+    FIREBASE_ADMIN_CLIENT_EMAIL=xxx
+    FIREBASE_ADMIN_PRIVATE_KEY=xxx
+
 ## CHOOSE AN OPTION
 
 1. Launch the project in dev mode  
