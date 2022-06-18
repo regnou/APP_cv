@@ -171,8 +171,8 @@
 </style>
 
 <script>
-	// !! json
-	import XPs_JSON from '$lib/9-cv/ui/block-xp/XP.json'
+	// ! ! json
+	// import XPs_JSON from '$lib/9-cv/ui/block-xp/XP.json'
 	// !! paper
 	import Paper, {Title, Subtitle, Content} from '@smui/paper'
 	import LayoutGrid, {Cell} from '@smui/layout-grid'
@@ -185,5 +185,34 @@
 	import {Icon} from '@smui/common'
 	import FunGh from '$lib/1-shell/ui/0-svg/social/FunGh.svelte'
 	import FunLinkedin from '$lib/1-shell/ui/0-svg/social/FunLinkedin.svelte'
+	import { onMount } from 'svelte';
 	//
+	/**
+	* @type {any[]}
+	*/
+	let XPs_JSON = []; 
+
+	// https://codesource.io/how-to-fetch-json-in-svelte-example/
+	async function getMissions() {
+		let response = await fetch("https://axelo.web-agency.app/wp-json/wp/v2/wa-mission");
+		let missions = await response.json();
+		return missions;
+	}
+	// Inspired from Miguel Monwoo WA Certif custom Svelte pre-renderings (using onMount will
+	// allow pre-rendering of async web services if callback is async registered...)
+	onMount(async () => {
+		let missions = await getMissions();
+		console.log(missions);
+		XPs_JSON = missions.map((m) => ({
+			"color": "#fef3c7",
+			"txt_1": m.content.rendered,
+			"txt_2": m.title.rendered,
+			// wa_end_date was specific form, normalised server side since js date is not so flexible
+			// https://stackoverflow.com/questions/10430321/how-to-parse-a-dd-mm-yyyy-or-dd-mm-yyyy-or-dd-mmm-yyyy-formatted-date-stri
+			// var d1 = Date.parseExact(input, "d/M/yyyy"); // Example using date.js
+			// https://css-tricks.com/everything-you-need-to-know-about-date-in-javascript/
+			"txt_3": new Date(m.date).getFullYear() + ' ' + new Date(m.wa_end_date).getFullYear(),
+		})); 
+	});
+
 </script>
