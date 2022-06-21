@@ -10,6 +10,7 @@ const fs = require('fs');
 const fetch = require('node-fetch');
 const FormData = require('form-data');
 const readline = require("readline");
+// const {Base64Encode} = require("base64-stream"); // npm install -D base64-stream // Required: {"node":"18.x"}
 const path = require("path");
 
 // https://www.npmjs.com/package/dotenv
@@ -22,10 +23,21 @@ const waApiBaseUrl = process.env.WA_REST_API_SERVER
 .replace(/\/+$/g, ''); // .trim('/');
 const waApiUserLocation = process.env.WA_USER_LOCATION;
 
-let [head_target, zip_subpath, zip_bundle] = [
+function toBool(mixed) {
+    // TODO : parse env to real values ?
+    // https://stackoverflow.com/questions/263965/how-can-i-convert-a-string-to-boolean-in-javascript
+    // $.parseJSON("TRUE".toLowerCase()); sound the best generic, but heavy ? 
+    return (typeof mixed === 'string' || mixed instanceof String)
+    ? JSON.parse(mixed.toLowerCase()) : Boolean(mixed);
+}
+
+let [head_target, zip_subpath, zip_bundle, isDebug, isDebugVerbose, isDebugVeryVerbose] = [
     process.env.WA_HEAD_TARGET || "wa-axelo-app-cv",
     process.env.WA_ZIP_SUBPATH || "",
-    process.env.WA_ZIP_ARCHIVEPATH || "build/static.zip"
+    process.env.WA_ZIP_ARCHIVEPATH || "build/static.zip",
+    toBool(process.env.DEBUG),
+    toBool(process.env.DEBUG_VERBOSE),
+    toBool(process.env.DEBUG_VERY_VERBOSE),
 ];
 
 function assert(test, msg, ...ctx) {
@@ -36,7 +48,7 @@ function assert(test, msg, ...ctx) {
 }
 
 function debug(...ctx) {
-    if (process.env.DEBUG) {
+    if (isDebug) {
         const prompt = `[${new Date()}]`;
         // console.debug(prompt, ...ctx);
         console.debug("");
@@ -45,6 +57,12 @@ function debug(...ctx) {
             console.debug("    ", log);
         });
         console.debug("");
+    }
+}
+
+function debugVerbose(...ctx) {
+    if (isDebugVerbose) {
+        debug(...ctx);
     }
 }
 
@@ -72,6 +90,7 @@ try {
 // const headers = new Headers({
 const defaultHeaders = () => ({
     accept: 'application/json'
+    // TODO : x-wp-nonce: ...
 });
 
 const defaultPostData = () => ({
@@ -87,7 +106,6 @@ const defaultPostData = () => ({
 const deploy_init = () => {
     const headers = {
         ...defaultHeaders(),
-        accept: 'application/json'
     };
     debug("With headers data : ", headers);
     
@@ -95,13 +113,29 @@ const deploy_init = () => {
     const postData = new FormData();
 
     // loading zip file 
-    const stats = fs.statSync(zip_bundle);
-    const fileSizeInBytes = stats.size;
-    const fileStream = fs.createReadStream(zip_bundle);
-    postData.append('zip_bundle', fileStream, {
-        name: path.basename(zip_bundle),
-        knownLength: fileSizeInBytes,
-    });
+    // TODO : 406 error solved with curl using "zip_bundle='@tmp.zip;type=application/zip'", but fail with below :
+    // const stats = fs.statSync(zip_bundle);
+    // const fileSizeInBytes = stats.size;
+    // const fileStream = fs.createReadStream(zip_bundle);
+    // postData.append('zip_bundle', fileStream, {
+    //     // contentType: 'application/zip', // This is for request Headers / Full encoding, per file it's 'type' arg
+    //     type: 'application/zip',
+    //     name: path.basename(zip_bundle),
+    //     knownLength: fileSizeInBytes,
+    // }); // TODO : Base64Encode for node >18, how in earlier version of node ? + dev env node install deps needed, bad for simple script...
+    // const b64Stream = fileStream.pipe(new Base64Encode());
+    // postData.append('zip_bundle_b64', < ... b64Stream ... >);
+    const zipBuffer = fs.readFileSync(zip_bundle);
+    
+    // utf8.decode(base64.decode(base64Str));
+    // const b64Buffer = base64.encode(utf8.encode(zipBuffer));
+
+    // https://stackoverflow.com/questions/6182315/how-can-i-do-base64-encoding-in-node-js
+    const b64Buffer = Buffer.from(zipBuffer).toString('base64')
+
+    postData.append('zip_bundle_b64', b64Buffer);
+
+    // TODO : 
     // loading extra params
     const extra = {
         ...defaultPostData(),
@@ -117,7 +151,7 @@ const deploy_init = () => {
             postData.append(k, extra[k]);
         }
     });
-    debug("With post data : ", postData);
+    debugVerbose("With post data : ", postData);
 
     // Try to deploy
     return fetch(deployUrl, {
@@ -168,7 +202,7 @@ const deploy_init = () => {
         return resp;
     })
     // Debug
-    .then(resp => debug("Did load : ", resp) || resp)
+    .then(resp => debugVerbose("Did load : ", resp) || resp)
     // Retry if should_retry is asked
     .then(resp => resp.should_retry ? deploy_init() : resp)
     // Error handler
