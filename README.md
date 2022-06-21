@@ -85,6 +85,9 @@ FIREBASE_ADMIN_PRIVATE_KEY=xxx
 4. (optional) Deploy on Firebase Hosting
    `npm run deploy`
 
+5. (optional) Deploy on wa-config-by-monwoo Rest API Wordpress Plugin
+   `npm run wa-deploy`
+
 ---
 
 ---

@@ -56,6 +56,7 @@
 		"o!!!!!3": "",
 		"o!!!!!4": "Firebase - DEPLOY",
 		"o!!!!!5": "",
+		"wa-deploy": "node wa-deploy.cjs",
 		"deploy": "npm run deploy-hosting",
 		"deploy-hosting": "firebase deploy --only hosting --project default",
 		"deploy-firestore": "firebase deploy --only firestore ",
