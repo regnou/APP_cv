@@ -110,7 +110,7 @@ const deploy_init = () => {
         zip_bundle,
     };
     Object.keys(extra).forEach(k => {
-        console.log("key", k);
+        // console.log("key", k);
         // Err : Cannot read properties of undefined (reading 'name')
         // if append undefined values to postData..., if check to avoid it
         if (extra[k] && extra[k].length) {
