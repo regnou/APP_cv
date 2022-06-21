@@ -8,7 +8,9 @@
 const fs = require('fs');
 // https://stackabuse.com/making-http-requests-in-node-js-with-node-fetch
 const fetch = require('node-fetch');
+const FormData = require('form-data');
 const readline = require("readline");
+const path = require("path");
 
 // https://www.npmjs.com/package/dotenv
 // https://coderrocketfuel.com/article/how-to-load-environment-variables-from-a-.env-file-in-nodejs
@@ -68,106 +70,129 @@ try {
 }
 
 // const headers = new Headers({
-const defaultHeaders = {
+const defaultHeaders = () => ({
     accept: 'application/json'
-};
+});
 
-const defaultPostData = {
+const defaultPostData = () => ({
     sync_action: 'publish',
     user_location: waApiUserLocation,
     wa_access_id: waAccess.wa_access_id,
     wa_api_pre_fetch_token: waAccess.wa_api_pre_fetch_token,
-};
+});
 
 // 🌖🌖 Request : wa-config-by-monwoo deploy api  🌖🌖
 // 🌖🌖           with build at build/static.zip  🌖🌖
-const headers = {
-    ...defaultHeaders,
-    accept: 'application/json'
-};
-debug("With headers data : ", headers);
 
-const postData = {
-    ...defaultPostData,
-    head_target,
-    zip_subpath,
-    zip_bundle,
-}
-debug("With post data : ", postData);
+const deploy_init = () => {
+    const headers = {
+        ...defaultHeaders(),
+        accept: 'application/json'
+    };
+    debug("With headers data : ", headers);
+    
+    // https://gist.github.com/pinkhominid/e6f53706e0dd8cf34f2bd94c3aa357c5
+    const postData = new FormData();
 
-// Try to deploy
-const deploy_init = () => fetch(deployUrl, {
-    method: 'POST',
-    body: postData,
-    headers: headers
-})
-// Debug
-.then(res => res.clone().text().then(
-    t => debug("Did fetch : ", t)
-) && res)
-// Json extract
-.then(res => res.json())
-// Test error and take appropriate actions
-.then(res => {
-    let resp = res;
-    if ('wa_api_login_required' === res.error) {
-        const authLink = res.location;
-        // https://nodejs.org/en/knowledge/command-line/how-to-prompt-for-command-line-input
-        const rl = readline.createInterface({
-            input: process.stdin,
-            output: process.stdout
-        });
-        resp = new Promise((resolve, reject) => {
-            rl.question(`Did you succed to authenticate with :\n${authLink}\n? (y/n)`, userResp => {
-                if ('n' === userResp) {
-                    rl.question(`Deploy will fail, should re-try \n${authLink}\n? (y/n) `, userResp => {
-                        if ('y' === userResp) {
-                            resolve({
-                                ...res,
-                                should_retry: true,
-                            });
-                        } else {
-                            reject(res);
-                        }
-                        rl.close();
-                    });    
-                } else {
-                    rl.close();
-                    resolve({
-                        ...res,
-                        should_retry: true,
-                    });    
-                }
+    // loading zip file 
+    const stats = fs.statSync(zip_bundle);
+    const fileSizeInBytes = stats.size;
+    const fileStream = fs.createReadStream(zip_bundle);
+    postData.append('zip_bundle', fileStream, {
+        name: path.basename(zip_bundle),
+        knownLength: fileSizeInBytes,
+    });
+    // loading extra params
+    const extra = {
+        ...defaultPostData(),
+        head_target,
+        zip_subpath,
+        zip_bundle,
+    };
+    Object.keys(extra).forEach(k => {
+        console.log("key", k);
+        // Err : Cannot read properties of undefined (reading 'name')
+        // if append undefined values to postData..., if check to avoid it
+        if (extra[k] && extra[k].length) {
+            postData.append(k, extra[k]);
+        }
+    });
+    debug("With post data : ", postData);
+
+    // Try to deploy
+    return fetch(deployUrl, {
+        method: 'POST',
+        body: postData,
+        headers: headers
+    })
+    // Debug
+    .then(res => res.clone().text().then(
+        t => debug("Did fetch : ", t)
+    ) && res)
+    // Json extract
+    .then(res => res.json())
+    // Test error and take appropriate actions
+    .then(res => {
+        let resp = res;
+        if ('wa_api_login_required' === res.error) {
+            const authLink = res.location;
+            // https://nodejs.org/en/knowledge/command-line/how-to-prompt-for-command-line-input
+            const rl = readline.createInterface({
+                input: process.stdin,
+                output: process.stdout
             });
-        });          
-    }
-    return resp;
-})
-// Debug
-.then(resp => debug("Did load : ", resp) || resp)
-// Retry if should_retry is asked
-.then(resp => resp.should_retry ? deploy_init() : resp)
-// Error handler
-.catch(err => {
-    console.error('Error :', err);
-    return err;
-})
-// Update internals from response
-.then(resp => {
-    wa_api_pre_fetch_token = (resp.wa_api_pre_fetch_token && resp.wa_api_pre_fetch_token.length)
-    ? resp.wa_api_pre_fetch_token : waAccess.wa_api_pre_fetch_token;
+            resp = new Promise((resolve, reject) => {
+                rl.question(`Did you succed to authenticate with :\n${authLink}\n? (y/n)`, userResp => {
+                    if ('n' === userResp) {
+                        rl.question(`Deploy will fail, should re-try \n${authLink}\n? (y/n) `, userResp => {
+                            if ('y' === userResp) {
+                                resolve({
+                                    ...res,
+                                    should_retry: true,
+                                });
+                            } else {
+                                reject(res);
+                            }
+                            rl.close();
+                        });    
+                    } else {
+                        rl.close();
+                        resolve({
+                            ...res,
+                            should_retry: true,
+                        });    
+                    }
+                });
+            });          
+        }
+        return resp;
+    })
+    // Debug
+    .then(resp => debug("Did load : ", resp) || resp)
+    // Retry if should_retry is asked
+    .then(resp => resp.should_retry ? deploy_init() : resp)
+    // Error handler
+    .catch(err => {
+        console.error('Error :', err);
+        return err;
+    })
+    // Update internals from response
+    .then(resp => {
+        wa_api_pre_fetch_token = (resp.wa_api_pre_fetch_token && resp.wa_api_pre_fetch_token.length)
+        ? resp.wa_api_pre_fetch_token : waAccess.wa_api_pre_fetch_token;
 
-    wa_access_id = (resp.wa_access_id && resp.wa_access_id.length)
-    ? resp.wa_access_id : waAccess.wa_access_id;
+        wa_access_id = (resp.wa_access_id && resp.wa_access_id.length)
+        ? resp.wa_access_id : waAccess.wa_access_id;
 
-    waAccess = {
-        ...waAccess,
-        wa_api_pre_fetch_token,
-        wa_access_id
-    }
+        waAccess = {
+            ...waAccess,
+            wa_api_pre_fetch_token,
+            wa_access_id
+        }
 
-    return resp;
-});
+        return resp;
+    });
+}
 
 const deploy = () => deploy_init()
 .then(resp => {
