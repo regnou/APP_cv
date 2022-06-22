@@ -70,4 +70,3 @@ pids
 *.eslintcache
 # -- wa-config-by-monwoo rest API
 .wa-access.tmp
-.wa-secu.env
