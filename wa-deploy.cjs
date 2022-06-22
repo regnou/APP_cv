@@ -1,27 +1,62 @@
 /*
 * Will connect to wa-config rest server and deploy
 *
+* This script demonstrate usages of wa-config-by-monwoo REST deploy API
+*
+* It's not suited for huge uploads (Upload of 200Mo zip file may fail...)
+*
 * 🌖🌖 Copyright Monwoo 2022 🌖🌖, build by Miguel Monwoo,
 * service@monwoo.com
 */
 
 const fs = require('fs');
 // https://stackabuse.com/making-http-requests-in-node-js-with-node-fetch
+// import fetch from "node-fetch";
 const fetch = require('node-fetch');
+// TODO : jest tests ? Humanly tested OK for now.
+// https://stackoverflow.com/questions/58648691/mocking-node-fetch-with-jest-creating-a-response-object-for-mocking
+// const { Response, Headers } = jest.requireActual('node-fetch'); 
+const { Response, Headers } = fetch;
+const https = require('https');
 const FormData = require('form-data');
 const readline = require("readline");
 // const {Base64Encode} = require("base64-stream"); // npm install -D base64-stream // Required: {"node":"18.x"}
 const path = require("path");
+const Cryptr = require('cryptr');
 
 // https://www.npmjs.com/package/dotenv
 // https://coderrocketfuel.com/article/how-to-load-environment-variables-from-a-.env-file-in-nodejs
 require('dotenv').config();
+const secuEnvConfigPath = process.env.WA_SECU_ENV_CONFIG || '.wa-secu.env'
+require('dotenv').config( { path: secuEnvConfigPath} );
 // console.log(process.env); // remove this after you've confirmed it's working
 
 // https://stackoverflow.com/questions/26156292/trim-specific-character-from-a-string
-const waApiBaseUrl = process.env.WA_REST_API_SERVER
-.replace(/\/+$/g, ''); // .trim('/');
-const waApiUserLocation = process.env.WA_USER_LOCATION;
+const waApiBaseUrl = (process.env.WA_REST_API_SERVER
+|| 'error:// # unknow-env-WA_REST_API_SERVER #').replace(/\/+$/g, ''); // .trim('/');
+const waApiUserLocation = process.env.WA_USER_LOCATION
+|| '# unknow-env-WA_USER_LOCATION #';
+
+// https://stackoverflow.com/questions/3746725/how-to-create-an-array-containing-1-n
+// for(var i=32;i<127;++i) console.log(String.fromCharCode(i));
+// const ascii = range(32, 126).map((c) => String.fromCharCode(c));
+
+// https://stackoverflow.com/questions/1349404/generate-random-string-characters-in-javascript
+function rand_string(length) {
+    var result           = '';
+    // var characters       = ascii;
+    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_/?^*{}()[]';
+    var charactersLength = characters.length;
+    for ( var i = 0; i < length; i++ ) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+   }
+   return result;
+}
+
+// range(9, 18); // [9, 10, 11, 12, 13, 14, 15, 16, 17, 18]
+function range(start, end) {
+    return Array(end - start + 1).fill().map((_, idx) => start + idx)
+}
 
 function toBool(mixed) {
     // TODO : parse env to real values ?
@@ -31,14 +66,30 @@ function toBool(mixed) {
     ? JSON.parse(mixed.toLowerCase()) : Boolean(mixed);
 }
 
-let [head_target, zip_subpath, zip_bundle, isDebug, isDebugVerbose, isDebugVeryVerbose] = [
-    process.env.WA_HEAD_TARGET || "wa-axelo-app-cv",
+let [
+    head_target, zip_subpath, zip_bundle,
+    isDebug, isDebugVerbose, isDebugVeryVerbose,
+    allowSslSelfSignedCertificates,
+    shouldEncrypt, encryptSalt
+] = [
+    process.env.WA_HEAD_TARGET || "unknow-env-WA_HEAD_TARGET",
     process.env.WA_ZIP_SUBPATH || "",
     process.env.WA_ZIP_ARCHIVEPATH || "build/static.zip",
+
     toBool(process.env.DEBUG),
     toBool(process.env.DEBUG_VERBOSE),
     toBool(process.env.DEBUG_VERY_VERBOSE),
+
+    toBool(process.env.WA_SSL_ALLOW_SELFSIGNED),
+
+    toBool(process.env.WA_SHOULD_ENCRYPT || true),
+    process.env.WA_ENCRYPT_SALT || null,
 ];
+
+function error(e, ...ctx) {
+    console.error(`ERROR : ${e}`, ...ctx);
+    throw new Error(e);
+}
 
 function assert(test, msg, ...ctx) {
     if (!test) {
@@ -76,21 +127,40 @@ debug("Will deploy from : ", waApiBaseUrl, waApiUserLocation)
 const deployUrl = `${waApiBaseUrl}/fronthead/sync`;
 debug("To url : ", deployUrl);
 
+if (!encryptSalt) {
+    encryptSalt = rand_string(42);
+    debug(`Save new encrypting secu key to ${secuEnvConfigPath}`);
+    // TODO : mege configs system ? Only one secu config for now. Ok, for now.
+    fs.writeFileSync(secuEnvConfigPath, `WA_ENCRYPT_SALT=${encryptSalt}`);
+}
+// https://www.npmjs.com/package/cryptr
+const cryptr = new Cryptr(encryptSalt);
+
 // https://nodejs.dev/learn/writing-files-with-nodejs
 const secuTmpFile = '.wa-access.tmp';
+
 let waAccess = {};
 try {
     if (fs.existsSync(secuTmpFile)) {
-        waAccess = JSON.parse(fs.readFileSync(secuTmpFile, waAccess));
+        let accessData = fs.readFileSync(secuTmpFile, waAccess);
+        if (shouldEncrypt) {
+            // https://www.npmjs.com/package/cryptr
+            const cryptr = new Cryptr(encryptSalt);
+            accessData = cryptr.decrypt(accessData);
+        }
+        waAccess = JSON.parse(accessData);
     }
 } catch (err) {
     console.error(err);
+    waAccess = {};
+    fs.rmSync(secuTmpFile);
 }
 
 // const headers = new Headers({
 const defaultHeaders = () => ({
-    accept: 'application/json'
-    // TODO : x-wp-nonce: ...
+    accept: 'application/json',
+    ... (waAccess.nonce ? { 'X-WP-Nonce': waAccess.nonce } : {}),
+    ... (waAccess.quick_COOKIE ? { cookie: waAccess.quick_COOKIE } : {}),
 });
 
 const defaultPostData = () => ({
@@ -103,7 +173,13 @@ const defaultPostData = () => ({
 // 🌖🌖 Request : wa-config-by-monwoo deploy api  🌖🌖
 // 🌖🌖           with build at build/static.zip  🌖🌖
 
-const deploy_init = () => {
+const deploy_init = (infinitRetrySentinelCount = 4) => {
+    if (infinitRetrySentinelCount < 0) {
+        debug("infinitRetrySentinelCount reached, STOPPING deploy_init.");
+        error("Fail deploy INIT.");
+        return { code : "infinit_retry_sentinel_count_reached_error" } ;
+    }
+
     const headers = {
         ...defaultHeaders(),
     };
@@ -153,11 +229,34 @@ const deploy_init = () => {
     });
     debugVerbose("With post data : ", postData);
 
+    // https://stackoverflow.com/questions/52478069/node-fetch-disable-ssl-verification
+    const permissiveHttpsAgent = new https.Agent({
+        rejectUnauthorized: false, // Allow api call on self signed certificates, for dev purpose
+    });
+
     // Try to deploy
     return fetch(deployUrl, {
         method: 'POST',
         body: postData,
-        headers: headers
+        headers: headers,
+        ...(allowSslSelfSignedCertificates ? { agent: permissiveHttpsAgent } : {} ),
+    })
+    // Handle network or bad url errors :
+    .catch(err => {
+        debug(err);
+        const resp = new Response(JSON.stringify({
+            code: 'wa-deploy_network_fetch_err',
+            message: `Fetch ERROR for : '${deployUrl}'`,
+            data: {
+                error: err,
+                status: 404,
+            }
+        }), {
+            status: 404,
+            statusText: 'fail',
+            headers: new Headers({ 'Content-Type': 'application/json' }),
+        });
+        return resp;
     })
     // Debug
     .then(res => res.clone().text().then(
@@ -203,7 +302,7 @@ const deploy_init = () => {
     })
     // Debug
     .then(resp => debugVerbose("Did load : ", resp) || resp)
-    // Retry if should_retry is asked
+    // Retry if should_retry is asked, no downgrade infinit sentinel since it's user choice to re-try
     .then(resp => resp.should_retry ? deploy_init() : resp)
     // Error handler
     .catch(err => {
@@ -212,20 +311,38 @@ const deploy_init = () => {
     })
     // Update internals from response
     .then(resp => {
-        wa_api_pre_fetch_token = (resp.wa_api_pre_fetch_token && resp.wa_api_pre_fetch_token.length)
-        ? resp.wa_api_pre_fetch_token : waAccess.wa_api_pre_fetch_token;
+        if ('wa_auth_denied_since_wp_auth_denied' === resp.code) {
+            waAccess = {}; // clean our waAccess since we have some wrong value in it making server loop on bad access...
+        }
 
-        wa_access_id = (resp.wa_access_id && resp.wa_access_id.length)
-        ? resp.wa_access_id : waAccess.wa_access_id;
+        wa_api_pre_fetch_token = (resp.data?.wa_api_pre_fetch_token && resp.data?.wa_api_pre_fetch_token.length)
+        ? resp.data?.wa_api_pre_fetch_token : waAccess.wa_api_pre_fetch_token;
+
+        wa_access_id = (resp.data?.wa_access_id && resp.data?.wa_access_id.length)
+        ? resp.data?.wa_access_id : waAccess.wa_access_id;
+
+        quick_COOKIE = (resp.data?.quick_COOKIE && resp.data?.quick_COOKIE.length)
+        ? resp.data?.quick_COOKIE : waAccess.quick_COOKIE;
+
+        nonce = (resp.data?.nonce && resp.data?.nonce.length)
+        ? resp.data?.nonce : waAccess.nonce;
 
         waAccess = {
             ...waAccess,
             wa_api_pre_fetch_token,
-            wa_access_id
+            wa_access_id,
+            quick_COOKIE,
+            nonce,
         }
 
+        debug("Did update waAccess : ", waAccess);
+
         return resp;
-    });
+    }).then(
+        resp => 'wrong_auth_header_or_cookie' === resp.code
+        ? deploy_init(infinitRetrySentinelCount - 1) // This error will fill up our credentials, next call should upload the zip
+        : resp
+    );
 }
 
 const deploy = () => deploy_init()
@@ -235,7 +352,12 @@ const deploy = () => deploy_init()
     // Save headers, cookies, auth, etc...
     // re-load deploy_init with updated headers will launch it right ;)
     try {
-        waAccess = fs.writeFileSync(secuTmpFile, JSON.stringify(waAccess));
+        let serializableWaAccess = JSON.stringify(waAccess);
+        if (shouldEncrypt) {
+            serializableWaAccess = cryptr.encrypt(serializableWaAccess);
+        }
+
+        fs.writeFileSync(secuTmpFile, serializableWaAccess);
     } catch (err) {
         console.error(err);
     }    
