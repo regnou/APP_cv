@@ -82,6 +82,9 @@ FIREBASE_ADMIN_PRIVATE_KEY=xxx
 
 ## DEPLOY
 
+- Config example available for .env file : .env.example
+- You need to setup you .env to run those scripts
+
 4. (optional) Deploy on Firebase Hosting
    `npm run deploy`
 
